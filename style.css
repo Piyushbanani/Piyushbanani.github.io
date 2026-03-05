@@ -82,9 +82,12 @@ input:checked + .slider:before { transform: translateX(26px); }
 /* The Sky Banner */
 .banner-image {
     height: 120px;
-    background-color: #a1c4fd; /* Placeholder blue */
-    /* To add your own image, replace the line above with: 
-    background-image: url('your-image.jpg'); background-size: cover; */
+    background-color: #a1c4fd; /* Fallback color */
+    
+    /* PASTE YOUR BANNER IMAGE LINK INSIDE THE QUOTES BELOW */
+    background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809'); 
+    background-size: cover;
+    background-position: center;
 }
 
 /* The Avatar Circle */
@@ -96,10 +99,15 @@ input:checked + .slider:before { transform: translateX(26px); }
 .avatar {
     width: 80px;
     height: 80px;
-    background-color: #dddddd; /* Placeholder gray */
+    background-color: #dddddd; /* Fallback color */
+    
+    /* PASTE YOUR PROFILE PICTURE LINK INSIDE THE QUOTES BELOW */
+    background-image: url('https://via.placeholder.com/150'); 
+    background-size: cover;
+    background-position: center;
+    
     border: 4px solid var(--card-bg);
     border-radius: 50%;
-    /* To add your own face, use background-image like the banner */
 }
 
 /* Text inside the card */
@@ -215,4 +223,61 @@ input:checked + .slider:before { transform: translateX(26px); }
 #mac-animation.maximized .mac-header {
     border-radius: 0;
 }
+/* Creator Profile Info */
+.creator-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
 
+.creator-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #333; 
+}
+
+.creator-details {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Clickable Links Styling */
+.creator-name-link {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+}
+.creator-name-link:hover {
+    opacity: 0.8;
+}
+
+.creator-name-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.creator-username {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+.verified-tick {
+    color: #1DA1F2;
+    font-size: 14px;
+}
+
+/* Row for the animated subs and video count */
+.stats-row {
+    font-size: 13px;
+    color: #888888;
+    display: flex;
+    gap: 5px;
+}
