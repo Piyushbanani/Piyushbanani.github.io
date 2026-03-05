@@ -165,6 +165,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     height: 90vh;
     opacity: 1;
     border-radius: 15px;
+    pointer-events: auto; /* <--- THIS IS THE MAGIC LINE THAT WAS MISSING */
 }
 
 .mac-header {
@@ -205,3 +206,13 @@ input:checked + .slider:before { transform: translateX(26px); }
     background-color: #333;
     border-radius: 10px;
 }
+/* MAXIMIZE: Makes it take up the whole screen */
+#mac-animation.maximized {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+}
+#mac-animation.maximized .mac-header {
+    border-radius: 0;
+}
+
