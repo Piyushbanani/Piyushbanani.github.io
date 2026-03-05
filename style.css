@@ -1,0 +1,207 @@
+/* These are our base colors (Light Mode) */
+:root {
+    --bg-color: #f4f4f5;
+    --card-bg: #ffffff;
+    --text-main: #000000;
+    --text-light: #666666;
+    --border-color: #eeeeee;
+}
+
+/* These are the colors when the switch is flipped (Dark Mode) */
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #ffffff;
+    --text-light: #aaaaaa;
+    --border-color: #333333;
+}
+
+/* General Page Setup */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s;
+}
+
+/* The Theme Switch at the top */
+.theme-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    border-radius: 24px;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+input:checked + .slider { background-color: #2196F3; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* The Main Card */
+.profile-card {
+    background-color: var(--card-bg);
+    width: 320px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+
+/* The Sky Banner */
+.banner-image {
+    height: 120px;
+    background-color: #a1c4fd; /* Placeholder blue */
+    /* To add your own image, replace the line above with: 
+    background-image: url('your-image.jpg'); background-size: cover; */
+}
+
+/* The Avatar Circle */
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -40px;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #dddddd; /* Placeholder gray */
+    border: 4px solid var(--card-bg);
+    border-radius: 50%;
+    /* To add your own face, use background-image like the banner */
+}
+
+/* Text inside the card */
+.profile-info {
+    text-align: center;
+    padding: 15px 20px;
+}
+.profile-info h1 {
+    margin: 5px 0;
+    font-size: 22px;
+}
+.profile-info p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* The 3 Bottom Buttons */
+.bottom-buttons {
+    display: flex;
+    border-top: 1px solid var(--border-color);
+}
+.button {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    border-right: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+.button:last-child {
+    border-right: none;
+}
+.button:hover {
+    background-color: rgba(0,0,0,0.03);
+}
+.button h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* MAC WINDOW ANIMATION STYLES */
+#mac-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0vw;
+    height: 0vh;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+#mac-animation.active {
+    width: 90vw;
+    height: 90vh;
+    opacity: 1;
+    border-radius: 15px;
+}
+
+.mac-header {
+    height: 30px;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.mac-body {
+    flex: 1;
+    overflow-y: auto; /* THIS IS CRUCIAL: It lets you scroll inside the floating window */
+    padding: 20px;
+    background-color: #121212; /* Keeps the inside dark and cinematic */
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Optional: Make the scrollbar look sleek inside the Mac window */
+.mac-body::-webkit-scrollbar {
+    width: 8px;
+}
+.mac-body::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+}

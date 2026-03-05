@@ -1,0 +1,118 @@
+/* Force dark background for the whole page */
+.dark-page {
+    background-color: #121212;
+    color: #ffffff;
+    display: block; /* Overrides the center alignment from index */
+    height: auto;
+    min-height: 100vh;
+}
+
+.works-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.back-button {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+.back-button:hover { opacity: 1; }
+
+/* Elegant Titles like your Canva reference */
+.elegant-title {
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 4px;
+    font-weight: normal;
+    margin: 60px 0 30px;
+    text-transform: uppercase;
+}
+
+/* The Video Cards */
+.video-card {
+    margin-bottom: 40px;
+}
+
+/* Creator Profile Info */
+.creator-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.creator-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #333; /* Placeholder gray */
+}
+
+.creator-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.creator-name-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* The Blue Tick */
+.verified-tick {
+    color: #1DA1F2;
+    font-size: 14px;
+}
+
+.sub-count {
+    font-size: 13px;
+    color: #aaaaaa;
+}
+
+/* The Actual Videos */
+.video-wrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #222;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Layout for Long Form (Wide) */
+.long-form .video-wrapper {
+    aspect-ratio: 16 / 9;
+}
+
+/* Layout for Reels (Tall) - Puts them side by side */
+.reels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.reels .video-wrapper {
+    aspect-ratio: 9 / 16;
+}
+
+/* Layout for Motion Graphics */
+.motion {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.motion .video-wrapper {
+    aspect-ratio: 1 / 1; /* Square format */
+}

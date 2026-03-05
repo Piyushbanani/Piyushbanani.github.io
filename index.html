@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush banani - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="theme-switch-container">
+        <span>Light</span>
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+        <span>Dark</span>
+    </div>
+
+    <div class="profile-card">
+        <div class="banner-image"></div>
+        
+        <div class="avatar-container">
+            <div class="avatar"></div>
+        </div>
+        
+        <div class="profile-info">
+            <h1>Piyush banani</h1>
+            <p>Motion Graphics Artist & Editor who focuses on simplicity & usability.</p>
+        </div>
+
+        <div class="bottom-buttons">
+            <div class="button" onclick="openWindow('works')">
+                <h3>Works</h3>
+            </div>
+            <div class="button" onclick="openWindow('clients')">
+                <h3>Clients</h3>
+            </div>
+            <div class="button" onclick="openWindow('feedbacks')">
+                <h3>Feedbacks</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="mac-animation" class="hidden">
+        <div class="mac-header">
+            <div class="dot red" onclick="closeWindow()" style="cursor: pointer;"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <span id="window-title" style="margin-left: 15px; font-weight: bold; color: var(--text-main);">Works</span>
+        </div>
+        
+        <div class="mac-body" id="mac-content">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
