@@ -51,58 +51,14 @@ function openWindow(section) {
 }
 
 // 3. Make the red dot close the window
-// --- MAC BUTTON FUNCTIONS ---
-
 function closeWindow() {
-    // Hide the window
     macWindow.classList.remove('active');
     
-    // Reset the size in case it was maximized or minimized
+    // Optional: Clear the content out after it shrinks back down
     setTimeout(() => {
-        macWindow.classList.remove('maximized');
-        macWindow.classList.remove('minimized');
-        macContent.innerHTML = ''; // Clear the content
+        macContent.innerHTML = '';
     }, 600);
 }
-
-function maximizeWindow() {
-    // If it's minimized, un-minimize it first
-    macWindow.classList.remove('minimized');
-    // Toggle full screen on and off
-    macWindow.classList.toggle('maximized');
-}
-
-function minimizeWindow() {
-    // If it's maximized, un-maximize it first
-    macWindow.classList.remove('maximized');
-    // Toggle shrinking on and off
-    macWindow.classList.toggle('minimized');
-}
-
-// --- BULLETPROOF CLICK RULES ---
-
-// 1. Stop clicks INSIDE the window from leaking out
-macWindow.addEventListener('click', function(event) {
-    event.stopPropagation(); 
-});
-
-// 2. Close when clicking OUTSIDE the window
-document.addEventListener('click', function(event) {
-    // If the window is open...
-    if (macWindow.classList.contains('active')) {
-        // ...and you didn't click a button to open it...
-        if (!event.target.closest('.button')) {
-            closeWindow();
-        }
-    }
-});
-
-// 3. Close with the Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape" && macWindow.classList.contains('active')) {
-        closeWindow();
-    }
-});
 // MAGIC TRICK 3: Better ways to close the window
 
 // 1. Close when pressing the "Escape" key on the keyboard
@@ -128,5 +84,4 @@ document.addEventListener('click', function(event) {
             closeWindow();
         }
     }
-
 });
