@@ -1,10 +1,15 @@
 /* These are our base colors (Light Mode) */
 :root {
-    --bg-color: #f4f4f5;
+    --bg-color: #f5f5f5; /* Slightly faded less white background as requested */
     --card-bg: #ffffff;
     --text-main: #000000;
     --text-light: #666666;
     --border-color: #eeeeee;
+    
+    /* Requested Retro Button Light Theme Variables */
+    --btn-bg: #FFAF00;
+    --btn-border: #ffffff;
+    --btn-shadow: #39280B;
 }
 
 /* These are the colors when the switch is flipped (Dark Mode) */
@@ -14,6 +19,11 @@ body.dark-mode {
     --text-main: #ffffff;
     --text-light: #aaaaaa;
     --border-color: #333333;
+    
+    /* Revert to original styling for Dark Mode Retro Button */
+    --btn-bg: #FFFFFF;
+    --btn-border: #000000;
+    --btn-shadow: #E6D5B8;
 }
 
 /* General Page Setup */
@@ -30,50 +40,15 @@ body {
     transition: background-color 0.3s;
 }
 
-/* The Theme Switch at the top */
-.theme-switch-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
-.switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
-    border-radius: 24px;
-    transition: .4s;
-}
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px; width: 18px;
-    left: 3px; bottom: 3px;
-    background-color: white;
-    border-radius: 50%;
-    transition: .4s;
-}
-input:checked + .slider { background-color: #2196F3; }
-input:checked + .slider:before { transform: translateX(26px); }
-
-/* The Main Card (MADE WIDER) */
+/* The Main Card */
 .profile-card {
+    position: relative; /* This allows the theme button to sit perfectly in the top right */
     background-color: var(--card-bg);
-    width: 440px; /* Increased from 320px */
-    max-width: 90vw; /* Keeps it safe on small phones */
+    width: 440px; 
+    max-width: 90vw; 
+    height: auto; 
+    display: flex; 
+    flex-direction: column; 
     border-radius: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     overflow: hidden;
@@ -82,26 +57,117 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 /* The Sky Banner */
 .banner-image {
-    height: 120px;
+    height: 170px; 
+    margin: 12px; 
+    border-radius: 24px; 
     background-color: #a1c4fd; 
     background-image: url('banner.jpg'); 
     background-size: cover;
     background-position: center;
 }
 
-/* NEW: Header Layout (Avatar + Name) */
-.profile-header {
-    display: flex;
-    align-items: center; /* Aligns name vertically with the avatar */
-    padding: 0 25px;
-    gap: 15px; /* Space between picture and name */
+/* Elegant Theme Switcher - Positioned Top Right */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
 }
 
-/* The Avatar Circle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Clean transparent track (NO solid colors) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Sleek translucent black */
+    border-radius: 30px;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+/* Subtle glass effect for dark mode track */
+body.dark-mode .slider {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+/* The Sliding Knob */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px; 
+    width: 24px;
+    left: 3px; 
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 2;
+}
+
+input:checked + .slider:before { 
+    transform: translateX(30px); 
+}
+
+/* Clean Icons inside the track */
+.sun-icon, .moon-icon {
+    width: 14px;
+    height: 14px;
+    z-index: 1;
+    color: #fff;
+    transition: 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Icon Animations Based on Toggle State */
+input:not(:checked) + .slider .moon-icon {
+    opacity: 0.2;
+    transform: scale(0.7);
+}
+input:not(:checked) + .slider .sun-icon {
+    opacity: 1;
+    color: #FFD700;
+    transform: scale(1.1) rotate(15deg);
+}
+
+input:checked + .slider .sun-icon {
+    opacity: 0.2;
+    transform: scale(0.7);
+}
+input:checked + .slider .moon-icon {
+    opacity: 1;
+    color: #FFD700;
+    transform: scale(1.1) rotate(-15deg);
+}
+
+/* Header Layout (Avatar + Name) */
+.profile-header {
+    display: flex;
+    align-items: center; 
+    padding: 0 25px;
+    gap: 15px; 
+}
+
+/* The Avatar Circle (STRICT Z-INDEX TO FIX OVERLAP FOREVER) */
 .avatar {
     width: 85px;
     height: 85px;
-    margin-top: -40px; /* Pulls only the picture up into the banner */
+    margin-top: -55px; 
     flex-shrink: 0;
     background-color: #dddddd;
     background-image: url('dp.jpg'); 
@@ -109,89 +175,115 @@ input:checked + .slider:before { transform: translateX(26px); }
     background-position: center;
     border: 4px solid var(--card-bg);
     border-radius: 50%;
+    position: relative; /* Forces priority stack */
+    z-index: 5; /* Makes sure it stays completely on top of banner */
 }
 
 /* The Name */
 .name-container h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 25px; 
     text-align: left;
-    padding-top: 10px; /* Pushes name down slightly so it doesn't overlap the banner */
+    margin-top: -20px; 
 }
 
-/* NEW: Connect Section Layout (Side-by-side) */
+/* Connect Section Layout */
 .connect-section {
-    padding: 20px 25px 25px 25px;
-    display: flex; /* This forces everything into one line */
-    align-items: center; /* Centers the text with the icons vertically */
-    gap: 12px; /* Space between the text and the icons */
+    padding: 15px 25px 20px 25px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+    gap: 24px; 
+    width: 100%;
+    box-sizing: border-box; 
 }
 
 .connect-section p {
-    margin: 0;
-    font-size: 15px;
-    color: var(--text-light);
+    font-size: 22px; 
     font-weight: 500;
-    white-space: nowrap; /* Stops the text from breaking into two lines */
+    margin: 0;
+    white-space: nowrap; 
 }
 
-/* Social SVGs */
+/* Social Icons */
 .social-links {
     display: flex;
-    gap: 15px;
+    gap: 22px; 
     align-items: center;
 }
 
-.social-icon svg {
-    fill: var(--text-main); 
-    transition: opacity 0.2s;
-    display: block; /* Fixes tiny spacing issues */
+.social-icon img, .social-icon svg {
+    width: 34px; 
+    height: 34px;
+    transition: opacity 0.2s, transform 0.2s;
+    display: block; 
 }
 
-.social-icon:hover svg {
-    opacity: 0.6;
+.social-icon:hover img, .social-icon:hover svg {
+    opacity: 0.7;
+    transform: scale(1.08); 
 }
 
-/* ------------------------------------------- */
-/* THE TOP-RIGHT ARROW WITH ANIMATION */
-/* ------------------------------------------- */
-
-.corner-arrow {
-    position: absolute;
-    top: 15px; 
-    right: 15px; /* Moved to Top Right! */
-    width: 14px;
-    height: 14px;
-    fill: none;
-    stroke: var(--text-light);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    
-    /* This attaches the continuous bounce animation */
-    animation: bounce-arrow 1.5s infinite ease-in-out; 
+/* --- 2D RETRO BUTTON STYLES --- */
+.expand-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px; 
 }
 
-/* The Keyframes (Just like After Effects) */
-@keyframes bounce-arrow {
-    0%, 100% {
-        transform: translate(0, 0);
-    }
-    50% {
-        transform: translate(3px, -3px); /* Moves 3px Right and 3px Up */
-    }
+.retro-btn {
+    background-color: var(--btn-bg);
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 26px;
+    border-radius: 24px; 
+    border: 1px solid var(--btn-border); 
+    box-shadow: 0px 4px 0px var(--btn-shadow); 
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.1s, box-shadow 0.1s; 
+    outline: none;
+}
+
+.retro-btn:active {
+    transform: translateY(4px); 
+    box-shadow: 0px 0px 0px var(--btn-shadow); 
+}
+
+/* --- EXPANDABLE ABOUT SECTION --- */
+.about-content-wrapper {
+    display: grid;
+    grid-template-rows: 0fr; 
+    transition: grid-template-rows 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.profile-card.expanded .about-content-wrapper {
+    grid-template-rows: 1fr; 
+}
+
+.about-content-inner {
+    overflow: hidden; 
+    padding: 0 25px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out; 
+}
+
+.profile-card.expanded .about-content-inner {
+    opacity: 1;
 }
 
 /* The 3 Bottom Buttons */
 .bottom-buttons {
     display: flex;
     border-top: 1px solid var(--border-color);
+    margin-top: auto; 
 }
 .button {
     flex: 1;
-    position: relative; /* REQUIRED for the absolute arrow to anchor to it */
+    position: relative; 
     text-align: center;
-    padding: 25px 0 20px 0; /* Gave it slightly more height */
+    padding: 25px 0 20px 0; 
     cursor: pointer;
     border-right: 1px solid var(--border-color);
     transition: background-color 0.2s;
@@ -207,10 +299,11 @@ input:checked + .slider:before { transform: translateX(26px); }
     font-size: 16px;
 }
 
+/* The Arrow */
 .corner-arrow {
     position: absolute !important;
     top: 15px !important;
-    right: 15px !important; /* Forced to Top Right */
+    right: 15px !important; 
     width: 14px;
     height: 14px;
     fill: none;
@@ -226,9 +319,10 @@ input:checked + .slider:before { transform: translateX(26px); }
         transform: translate(0, 0);
     }
     50% {
-        transform: translate(3px, -3px); /* Bounces 3px Right and 3px Up */
+        transform: translate(3px, -3px); 
     }
 }
+
 /* MAC WINDOW ANIMATION STYLES */
 #mac-animation {
     position: fixed;
@@ -253,7 +347,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     height: 90vh;
     opacity: 1;
     border-radius: 15px;
-    pointer-events: auto; /* <--- THIS IS THE MAGIC LINE THAT WAS MISSING */
+    pointer-events: auto; 
 }
 
 .mac-header {
@@ -278,15 +372,14 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 .mac-body {
     flex: 1;
-    overflow-y: auto; /* THIS IS CRUCIAL: It lets you scroll inside the floating window */
+    overflow-y: auto; 
     padding: 20px;
-    background-color: #121212; /* Keeps the inside dark and cinematic */
+    background-color: #121212; 
     color: white;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
-/* Optional: Make the scrollbar look sleek inside the Mac window */
 .mac-body::-webkit-scrollbar {
     width: 8px;
 }
@@ -294,24 +387,16 @@ input:checked + .slider:before { transform: translateX(26px); }
     background-color: #333;
     border-radius: 10px;
 }
-/* MAXIMIZE: Makes it take up the whole screen */
-/* MAXIMIZE: Fixed for mobile browser search bars */
+
 #mac-animation.maximized {
-    width: 100% !important;
-    height: 100dvh !important; /* 'dvh' respects the mobile browser UI */
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important; /* Stops it from pushing off-screen */
+    width: 100vw !important;
+    height: 100dvh !important;
     border-radius: 0 !important;
 }
 #mac-animation.maximized .mac-header {
     border-radius: 0;
 }
 
-#mac-animation.maximized .mac-header {
-    border-radius: 0;
-}
-/* Creator Profile Info */
 .creator-info {
     display: flex;
     align-items: center;
@@ -332,7 +417,6 @@ input:checked + .slider:before { transform: translateX(26px); }
     flex-direction: column;
 }
 
-/* Clickable Links Styling */
 .creator-name-link {
     text-decoration: none;
     color: inherit;
@@ -362,7 +446,6 @@ input:checked + .slider:before { transform: translateX(26px); }
     font-size: 14px;
 }
 
-/* Row for the animated subs and video count */
 .stats-row {
     font-size: 13px;
     color: #888888;

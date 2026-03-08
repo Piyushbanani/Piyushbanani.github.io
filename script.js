@@ -18,24 +18,23 @@ toggleSwitch.addEventListener('change', function() {
 });
 
 // --- 2. YOUR VIDEO DATA (THE TEMPLATE BLOCKS) ---
-// To add a new video, just copy one of these blocks {} and fill in the details!
 const myWork = {
     longForm: [
         {
-            platform: "drive", // Type "youtube" or "drive"
-            videoLink: "https://drive.google.com/file/d/13S3bmxCsDd4ZFkcQYKudlnFxvXOOk28M/view?usp=sharing", // Just paste the raw link here
+            platform: "drive", 
+            videoLink: "https://drive.google.com/file/d/13S3bmxCsDd4ZFkcQYKudlnFxvXOOk28M/view?usp=sharing", 
             channelName: "Aevytv",
             username: "@aevytv",
             channelLink: "https://www.youtube.com/@aevytv",
-            avatarUrl: "https://yt3.ggpht.com/smpvbfd6kga9xo3rTSPe-wZt0VEejfcK9uUcFmZKAkBV8_CJgMBHSBnXn_MHx7_nF8Mul3jJ2Q=s176-c-k-c0x00ffffff-no-rj-mo", // Right-click YT picture -> Copy image address
-            subStart: 0.10, // Starting number (0.10 means 100k)
-            subEnd: 1.21,   // Ending number (1.21 means 1.21M)
-            subSuffix: "M", // M for Millions, K for Thousands
+            avatarUrl: "https://yt3.ggpht.com/smpvbfd6kga9xo3rTSPe-wZt0VEejfcK9uUcFmZKAkBV8_CJgMBHSBnXn_MHx7_nF8Mul3jJ2Q=s176-c-k-c0x00ffffff-no-rj-mo", 
+            subStart: 0.10, 
+            subEnd: 1.21,   
+            subSuffix: "M", 
             videoCount: "540"
         },
         {
             platform: "youtube",
-            videoLink: "https://youtu.be/2LVasifxts8?t=385", // For YouTube, just paste the Video ID
+            videoLink: "https://youtu.be/2LVasifxts8?t=385", 
             channelName: "Shyam Meera Singh",
             username: "@ShyamMeeraSingh1",
             channelLink: "https://www.youtube.com/@ShyamMeeraSingh1",
@@ -51,12 +50,10 @@ const myWork = {
 };
 
 // --- AUTOMATIC VIDEO CARD BUILDER ---
-// --- AUTOMATIC VIDEO CARD BUILDER ---
 function createVideoCard(videoData) {
     let embedUrl = "";
     
     if (videoData.platform === "youtube") {
-        // This new code automatically fixes whatever kind of YouTube link you paste!
         let cleanId = videoData.videoLink;
         if (cleanId.includes('youtu.be/')) {
             cleanId = cleanId.split('youtu.be/')[1].split('?')[0];
@@ -108,7 +105,6 @@ function animateValue(obj, start, end, duration, suffix) {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
         
-        // Easing function for a smooth cinematic slowdown at the end
         const easeProgress = 1 - Math.pow(1 - progress, 3);
         const currentVal = (easeProgress * (end - start) + start).toFixed(2); 
         
@@ -117,7 +113,7 @@ function animateValue(obj, start, end, duration, suffix) {
         if (progress < 1) {
             window.requestAnimationFrame(step);
         } else {
-            obj.innerHTML = end + suffix + " subscribers"; // lock exactly on the final number
+            obj.innerHTML = end + suffix + " subscribers"; 
         }
     };
     window.requestAnimationFrame(step);
@@ -132,12 +128,11 @@ function renderSection(sectionId, gridId, videoArray) {
         
         let htmlString = "";
         videoArray.forEach((video, index) => {
-            video.uniqueId = sectionId + '-' + index; // Create a unique ID for the animation target
+            video.uniqueId = sectionId + '-' + index; 
             htmlString += createVideoCard(video);
         });
-        grid.innerHTML = htmlString; // Inject all cards at once
+        grid.innerHTML = htmlString; 
 
-        // Trigger animations for each card taking exactly 3 seconds (3000ms)
         videoArray.forEach(video => {
             const subElement = document.getElementById(`sub-${video.uniqueId}`);
             if (subElement) {
@@ -219,3 +214,14 @@ document.addEventListener('keydown', function(event) {
         closeWindow();
     }
 });
+
+// --- 4. EXPAND/COLLAPSE CARD LOGIC ---
+const aboutMeBtn = document.getElementById('aboutMeBtn');
+const profileCard = document.querySelector('.profile-card');
+
+if (aboutMeBtn && profileCard) {
+    aboutMeBtn.addEventListener('click', function() {
+        // Just expands the middle section, doesn't touch the text
+        profileCard.classList.toggle('expanded');
+    });
+}
