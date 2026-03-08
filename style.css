@@ -193,7 +193,7 @@ input:checked + .slider .moon-icon {
     display: flex; 
     align-items: center; 
     justify-content: flex-start;
-    gap: 24px; 
+    gap: 15px; 
     width: 100%;
     box-sizing: border-box; 
 }
@@ -208,7 +208,7 @@ input:checked + .slider .moon-icon {
 /* Social Icons */
 .social-links {
     display: flex;
-    gap: 22px; 
+    gap: 15px; 
     align-items: center;
 }
 
