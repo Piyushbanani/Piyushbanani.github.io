@@ -69,10 +69,11 @@ body {
 input:checked + .slider { background-color: #2196F3; }
 input:checked + .slider:before { transform: translateX(26px); }
 
-/* The Main Card */
+/* The Main Card (MADE WIDER) */
 .profile-card {
     background-color: var(--card-bg);
-    width: 320px;
+    width: 440px; /* Increased from 320px */
+    max-width: 90vw; /* Keeps it safe on small phones */
     border-radius: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     overflow: hidden;
@@ -82,47 +83,103 @@ input:checked + .slider:before { transform: translateX(26px); }
 /* The Sky Banner */
 .banner-image {
     height: 120px;
-    background-color: #a1c4fd; /* Fallback color */
-    
-    /* PASTE YOUR BANNER IMAGE LINK INSIDE THE QUOTES BELOW */
-    background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809'); 
+    background-color: #a1c4fd; 
+    background-image: url('banner.jpg'); 
     background-size: cover;
     background-position: center;
 }
 
-/* The Avatar Circle */
-.avatar-container {
+/* NEW: Header Layout (Avatar + Name) */
+.profile-header {
     display: flex;
-    justify-content: center;
-    margin-top: -40px;
+    align-items: center; /* Aligns name vertically with the avatar */
+    padding: 0 25px;
+    gap: 15px; /* Space between picture and name */
 }
+
+/* The Avatar Circle */
 .avatar {
-    width: 80px;
-    height: 80px;
-    background-color: #dddddd; /* Fallback color */
-    
-    /* PASTE YOUR PROFILE PICTURE LINK INSIDE THE QUOTES BELOW */
-    background-image: url('https://via.placeholder.com/150'); 
+    width: 85px;
+    height: 85px;
+    margin-top: -40px; /* Pulls only the picture up into the banner */
+    flex-shrink: 0;
+    background-color: #dddddd;
+    background-image: url('dp.jpg'); 
     background-size: cover;
     background-position: center;
-    
     border: 4px solid var(--card-bg);
     border-radius: 50%;
 }
 
-/* Text inside the card */
-.profile-info {
-    text-align: center;
-    padding: 15px 20px;
+/* The Name */
+.name-container h1 {
+    margin: 0;
+    font-size: 24px;
+    text-align: left;
+    padding-top: 10px; /* Pushes name down slightly so it doesn't overlap the banner */
 }
-.profile-info h1 {
-    margin: 5px 0;
-    font-size: 22px;
+
+/* NEW: Connect Section Layout (Side-by-side) */
+.connect-section {
+    padding: 20px 25px 25px 25px;
+    display: flex; /* This forces everything into one line */
+    align-items: center; /* Centers the text with the icons vertically */
+    gap: 12px; /* Space between the text and the icons */
 }
-.profile-info p {
-    font-size: 14px;
+
+.connect-section p {
+    margin: 0;
+    font-size: 15px;
     color: var(--text-light);
-    line-height: 1.4;
+    font-weight: 500;
+    white-space: nowrap; /* Stops the text from breaking into two lines */
+}
+
+/* Social SVGs */
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icon svg {
+    fill: var(--text-main); 
+    transition: opacity 0.2s;
+    display: block; /* Fixes tiny spacing issues */
+}
+
+.social-icon:hover svg {
+    opacity: 0.6;
+}
+
+/* ------------------------------------------- */
+/* THE TOP-RIGHT ARROW WITH ANIMATION */
+/* ------------------------------------------- */
+
+.corner-arrow {
+    position: absolute;
+    top: 15px; 
+    right: 15px; /* Moved to Top Right! */
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--text-light);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    
+    /* This attaches the continuous bounce animation */
+    animation: bounce-arrow 1.5s infinite ease-in-out; 
+}
+
+/* The Keyframes (Just like After Effects) */
+@keyframes bounce-arrow {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(3px, -3px); /* Moves 3px Right and 3px Up */
+    }
 }
 
 /* The 3 Bottom Buttons */
@@ -132,8 +189,9 @@ input:checked + .slider:before { transform: translateX(26px); }
 }
 .button {
     flex: 1;
+    position: relative; /* REQUIRED for the absolute arrow to anchor to it */
     text-align: center;
-    padding: 15px 0;
+    padding: 25px 0 20px 0; /* Gave it slightly more height */
     cursor: pointer;
     border-right: 1px solid var(--border-color);
     transition: background-color 0.2s;
@@ -149,6 +207,28 @@ input:checked + .slider:before { transform: translateX(26px); }
     font-size: 16px;
 }
 
+.corner-arrow {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important; /* Forced to Top Right */
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--text-light);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: bounce-arrow 1.5s infinite ease-in-out; 
+}
+
+@keyframes bounce-arrow {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(3px, -3px); /* Bounces 3px Right and 3px Up */
+    }
+}
 /* MAC WINDOW ANIMATION STYLES */
 #mac-animation {
     position: fixed;
@@ -215,11 +295,19 @@ input:checked + .slider:before { transform: translateX(26px); }
     border-radius: 10px;
 }
 /* MAXIMIZE: Makes it take up the whole screen */
+/* MAXIMIZE: Fixed for mobile browser search bars */
 #mac-animation.maximized {
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100% !important;
+    height: 100dvh !important; /* 'dvh' respects the mobile browser UI */
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important; /* Stops it from pushing off-screen */
     border-radius: 0 !important;
 }
+#mac-animation.maximized .mac-header {
+    border-radius: 0;
+}
+
 #mac-animation.maximized .mac-header {
     border-radius: 0;
 }
