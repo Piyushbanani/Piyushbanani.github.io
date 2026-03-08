@@ -73,9 +73,11 @@
     font-size: 14px;
 }
 
+/* Ensures sub-count correctly inherits the strong variables from style.css */
 .sub-count {
-    font-size: 13px;
-    color: #aaaaaa;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--mac-subtext); 
 }
 
 /* The Actual Videos */

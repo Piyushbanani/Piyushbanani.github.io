@@ -144,11 +144,13 @@ function renderSection(sectionId, gridId, videoArray) {
 
 // --- 3. THE FLOATING MAC WINDOW LOGIC ---
 const macWindow = document.getElementById('mac-animation');
+const windowOverlay = document.getElementById('window-overlay');
 const macContent = document.getElementById('mac-content');
 const windowTitle = document.getElementById('window-title');
 
 function openWindow(section) {
     macWindow.classList.add('active');
+    windowOverlay.classList.add('active'); // Turn on background blur
 
     if (section === 'works') {
         windowTitle.innerText = "Works";
@@ -188,6 +190,8 @@ function openWindow(section) {
 // --- MAC BUTTON FUNCTIONS & BULLETPROOF CLICK RULES ---
 function closeWindow() {
     macWindow.classList.remove('active');
+    windowOverlay.classList.remove('active'); // Turn off background blur
+    
     setTimeout(() => {
         macWindow.classList.remove('maximized');
         macContent.innerHTML = ''; 
@@ -198,12 +202,10 @@ function maximizeWindow() {
     macWindow.classList.toggle('maximized');
 }
 
+// Closes window if you click on the blurred background overlay
 document.addEventListener('click', function(event) {
     if (macWindow.classList.contains('active')) {
-        const clickedInsideWindow = macWindow.contains(event.target);
-        const clickedOpenButton = event.target.closest('.button');
-
-        if (!clickedInsideWindow && !clickedOpenButton) {
+        if (event.target === windowOverlay) {
             closeWindow();
         }
     }
@@ -221,7 +223,6 @@ const profileCard = document.querySelector('.profile-card');
 
 if (aboutMeBtn && profileCard) {
     aboutMeBtn.addEventListener('click', function() {
-        // Just expands the middle section, doesn't touch the text
         profileCard.classList.toggle('expanded');
     });
 }
