@@ -69,7 +69,6 @@ const myWork = {
             videoCount: "125"
         }
     ],
-    // REELS NOW GROUPED BY CREATOR
     reels: [
         {
             channelName: "Aniket Thakur",
@@ -147,6 +146,7 @@ function getEmbedUrl(videoData) {
 }
 
 // --- FLAT CARD BUILDER (Long form & Motion Graphics) ---
+// Added 'slide-animate' and data attributes for the observer to trigger animations
 function createVideoCard(videoData) {
     let embedUrl = getEmbedUrl(videoData);
 
@@ -168,7 +168,7 @@ function createVideoCard(videoData) {
                         ${videoData.username}
                     </a>
                     <div class="stats-row">
-                        <span class="sub-count" id="sub-${videoData.uniqueId}">0 subscribers</span>
+                        <span class="sub-count" data-start="${videoData.subStart}" data-end="${videoData.subEnd}" data-suffix="${videoData.subSuffix}">0 subscribers</span>
                         <span>• ${videoData.videoCount} videos</span>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ function createVideoCard(videoData) {
     }
 
     return `
-        <div class="video-card">
+        <div class="video-card slide-animate">
             ${creatorInfoHtml}
             <div class="video-wrapper">
                 <iframe src="${embedUrl}" allowfullscreen></iframe>
@@ -216,22 +216,15 @@ function renderSection(sectionId, gridId, videoArray) {
         section.style.display = "block"; 
         
         let htmlString = "";
-        videoArray.forEach((video, index) => {
-            video.uniqueId = sectionId + '-' + index; 
+        videoArray.forEach((video) => {
             htmlString += createVideoCard(video);
         });
         grid.innerHTML = htmlString; 
-
-        videoArray.forEach(video => {
-            const subElement = document.getElementById(`sub-${video.uniqueId}`);
-            if (subElement && video.channelName) {
-                animateValue(subElement, video.subStart, video.subEnd, 3000, video.subSuffix);
-            }
-        });
     }
 }
 
 // --- RENDER GROUPED LIST (Reels) ---
+// Added 'slide-animate' and data attributes for the observer
 function renderGroupedSection(sectionId, gridId, dataArray) {
     const section = document.getElementById(sectionId);
     const grid = document.getElementById(gridId);
@@ -240,9 +233,7 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
         section.style.display = "block"; 
         
         let htmlString = "";
-        dataArray.forEach((creator, index) => {
-            creator.uniqueId = sectionId + '-' + index; 
-            
+        dataArray.forEach((creator) => {
             let videosHtml = "";
             creator.videos.forEach(vid => {
                 let embedUrl = getEmbedUrl(vid);
@@ -256,7 +247,7 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
             });
 
             htmlString += `
-                <div style="margin-bottom: 50px;">
+                <div class="slide-animate" style="margin-bottom: 50px;">
                     <div class="creator-info">
                         <a href="${creator.channelLink}" target="_blank" class="creator-name-link">
                             <img src="${creator.avatarUrl}" alt="Avatar" class="creator-avatar">
@@ -272,7 +263,7 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
                                 ${creator.username}
                             </a>
                             <div class="stats-row">
-                                <span class="sub-count" id="sub-${creator.uniqueId}">0 subscribers</span>
+                                <span class="sub-count" data-start="${creator.subStart}" data-end="${creator.subEnd}" data-suffix="${creator.subSuffix}">0 subscribers</span>
                                 <span>• ${creator.videoCount} videos</span>
                             </div>
                         </div>
@@ -284,14 +275,43 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
             `;
         });
         grid.innerHTML = htmlString; 
+    }
+}
 
-        dataArray.forEach(creator => {
-            const subElement = document.getElementById(`sub-${creator.uniqueId}`);
-            if (subElement) {
-                animateValue(subElement, creator.subStart, creator.subEnd, 3000, creator.subSuffix);
+// --- SCROLL ANIMATION OBSERVER ---
+// This watches elements and animates them ONLY when they scroll into view
+let scrollObserver;
+
+function initScrollAnimations() {
+    if (scrollObserver) scrollObserver.disconnect();
+    
+    scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 1. Trigger the Apple bouncy slide-in
+                entry.target.classList.add('visible');
+                
+                // 2. Trigger the number counter (if one exists inside this block)
+                const subCounter = entry.target.querySelector('.sub-count');
+                if (subCounter && !subCounter.classList.contains('animated')) {
+                    subCounter.classList.add('animated'); // Mark so it doesn't double-animate
+                    const startVal = parseFloat(subCounter.dataset.start) || 0;
+                    const endVal = parseFloat(subCounter.dataset.end) || 0;
+                    const suffix = subCounter.dataset.suffix || "";
+                    animateValue(subCounter, startVal, endVal, 2500, suffix);
+                }
+                
+                // 3. Unobserve so it only happens ONCE per window open!
+                observer.unobserve(entry.target);
             }
         });
-    }
+    }, { 
+        root: document.getElementById('mac-content'), 
+        rootMargin: '0px 0px -40px 0px', // Triggers slightly before it fully hits the bottom
+        threshold: 0.1 
+    });
+
+    document.querySelectorAll('.slide-animate').forEach(el => scrollObserver.observe(el));
 }
 
 
@@ -336,6 +356,11 @@ function openWindow(section) {
         renderSection('long-form-section', 'long-form-grid', myWork.longForm);
         renderGroupedSection('reels-section', 'reels-wrapper', myWork.reels);
         renderSection('motion-section', 'motion-grid', myWork.motionGraphics);
+
+        // Initialize the scroll observer right after injecting the HTML
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
 
     } else if (section === 'clients') {
         windowTitle.innerText = "Clients";

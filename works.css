@@ -33,6 +33,18 @@
     text-transform: uppercase;
 }
 
+/* --- APPLE-STYLE BOUNCY SLIDE ANIMATION --- */
+.slide-animate {
+    opacity: 0;
+    transform: translateX(-60px); /* Starts off to the left */
+    transition: opacity 0.6s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* The magic bounce curve */
+}
+.slide-animate.visible {
+    opacity: 1;
+    transform: translateX(0); /* Snaps into place */
+}
+
+
 /* The Video Cards */
 .video-card {
     margin-bottom: 40px;
@@ -128,8 +140,6 @@
 }
 
 /* --- THE MIDDLE-GROUND FIX FOR GOOGLE DRIVE --- */
-/* A 1.5x scale gives Drive just enough width to not break its alignment, 
-   while keeping the buttons at a comfortable, standard viewing size. */
 .reels-grid .video-wrapper iframe,
 .motion .video-wrapper iframe {
     position: absolute;
@@ -140,4 +150,22 @@
     transform: scale(0.666667);
     transform-origin: top left;
     border: none;
+}
+
+/* --- MOBILE RESPONSIVENESS (PHONES & SMALL TABLETS) --- */
+@media (max-width: 768px) {
+    .reels-grid, 
+    .motion {
+        /* Changes from 3 columns to a single stacking column */
+        grid-template-columns: 1fr;
+        gap: 25px; 
+    }
+    
+    .reels-grid .video-wrapper,
+    .motion .video-wrapper {
+        /* Prevents the 9:16 videos from becoming absurdly huge on screens.
+           Limits width to a standard phone size, centering it beautifully. */
+        max-width: 320px; 
+        margin: 0 auto; 
+    }
 }
