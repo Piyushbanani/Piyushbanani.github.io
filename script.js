@@ -21,8 +21,8 @@ toggleSwitch.addEventListener('change', function() {
 const myWork = {
     longForm: [
         {
-            platform: "youtube", 
-            videoLink: "https://www.youtube.com/watch?v=jxijEnl9lUs", 
+            platform: "drive", 
+            videoLink: "https://drive.google.com/file/d/13S3bmxCsDd4ZFkcQYKudlnFxvXOOk28M/view?usp=sharing", 
             channelName: "Aevytv",
             username: "@aevytv",
             channelLink: "https://www.youtube.com/@aevytv",
@@ -33,8 +33,8 @@ const myWork = {
             videoCount: "540"
         },
         {
-            platform: "youtube", 
-            videoLink: "cook here", 
+            platform: "drive", 
+            videoLink: "https://drive.google.com/file/d/1Ps4dZHsptFCuiuEkqk5TyXwYkuSvqREU/view?usp=sharing", 
             channelName: "Shivanshu Agrawal",
             username: "@Shivanshu.Agrawal",
             channelLink: "https://www.youtube.com/@Shivanshu.Agrawal",
@@ -74,30 +74,30 @@ const myWork = {
             channelName: "Aniket Thakur",
             username: "@Aniketthakur01",
             channelLink: "https://www.instagram.com/anikett.thakurr/",
-            avatarUrl: "https://yt3.ggpht.com/vZOk8EXPt-z2D47EcxH7joqFahSmmw_OnmWb5yoL-m8wgzOnp0fuwbMp8i7yuChmuU_v9IOJ=s176-c-k-c0x00ffffff-no-rj-mo",
+            avatarUrl: "https://instagram.fjdh1-1.fna.fbcdn.net/v/t51.2885-19/443497688_2821062141402690_1624080003562215226_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fjdh1-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QF8mMql77GTkN1OlFBx3iI1HxrbWJ-y6oX5O2Wl-c1Q7JwbwVgOFmUMsivIkZ3gJqbfWI0wBLL65gOn5L1_4_0F&_nc_ohc=9J5FfCy97qUQ7kNvwFAO9sO&_nc_gid=TcC1sxY_NI_6djPZv_zD6g&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfxHjYqi3VKsIeQ7UeLb_-hpPcazuYP5D1CCOgsKaWsRNw&oe=69B6255A&_nc_sid=7a9f4b",
             subStart: 500,
             subEnd: 964,
             subSuffix: "K",
             videoCount: "544",
             videos: [
-                { platform: "youtube", videoLink: "https://www.youtube.com/shorts/L6o8qKAJxAs" },
-                { platform: "youtube", videoLink: "https://youtube.com/shorts/3iBQiR6zCHc?si=9YaACY1fupB1dyp5" },
-                { platform: "youtube", videoLink: "https://www.youtube.com/shorts/E1dPFX1y1Xg" }
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/1_X_JHKWxXAN0FepVgNiymipEUg668osf/view?usp=sharing" },
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/106WH4WJ3JwgMPYt08InnIKVqQDtG5fz1/view?usp=sharing" },
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/138eB2030DdxbX4wZfHEkvNZVo2Yw7l0k/view?usp=sharing" }
             ]
         },
         {
             channelName: "Adarsh Gupta",
             username: "@adarshh.gupta",
             channelLink: "https://www.instagram.com/adarshh.gupta/",
-            avatarUrl: "https://yt3.googleusercontent.com/buet1DbdJ3gsiDZ6anqVQ8uMy1Y8tL5ZQmjJLTNHuEzgA-kOwLH90lx6jOKuGBUoLVu_u5vENg=s160-c-k-c0x00ffffff-no-rj",
+            avatarUrl: "https://instagram.fjdh1-1.fna.fbcdn.net/v/t51.2885-19/299336777_1395897304237944_2835521941959789048_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby42OTcuYzIifQ&_nc_ht=instagram.fjdh1-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QE6QPgQUoGeDOyboA46i7OU_Pj2nRakgwmHjdbf9MzWfbOwJH5R4WNkcILZWbWDF0wEjaEtU1syHfmJO-u45kcP&_nc_ohc=WlT8bq-6MXYQ7kNvwFNfyFT&_nc_gid=kpxNNYrQOP_NQVLeEpMSGA&edm=APoiHPcBAAAA&ccb=7-5&oh=00_Afx1gK1A9uozce8FUnELpeF_dmqASoxSQe6vVhvxFc3RxA&oe=69B63773&_nc_sid=22de04",
             subStart: 1.0,
             subEnd: 2.0,
             subSuffix: "M",
             videoCount: "799",
             videos: [
-                { platform: "youtube", videoLink: "cook here" },
-                { platform: "youtube", videoLink: "https://www.youtube.com/shorts/yBsLEy6PmVc" },
-                { platform: "youtube", videoLink: "cook here" }
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/10tVHHFUCRIs25hK0MgHLc_QWFzlQnFRv/view?usp=sharing" },
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/1DODujJnRCP8A_CKq5AOYWAWPEr1vmdni/view?usp=sharing" },
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/1l9XFZcpFAFmccVWGERBgpTejKRjjz4qh/view?usp=sharing" }
             ]
         },
         {
@@ -110,41 +110,33 @@ const myWork = {
             subSuffix: "K",
             videoCount: "300",
             videos: [
-                { platform: "youtube", videoLink: "https://www.youtube.com/shorts/Mox8clDaNG8" },
-                { platform: "youtube", videoLink: "https://www.youtube.com/shorts/U0RKbW8vt8M" },
-                { platform: "youtube", videoLink: "https://www.youtube.com/shorts/1PI_2bZVtjo" }
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/1OtOYIqvHqDrOVYwhDQ7A188X-uvymL4P/view?usp=sharing" },
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/15NXwwUDoRTdGtSlLkbmXoDWwUpnGqlPb/view?usp=sharing" },
+                { platform: "drive", videoLink: "https://drive.google.com/file/d/1rsFp-oCk76kr75Xom61iBGof5UjIOlbI/view?usp=sharing" }
             ]
         }
     ],
     motionGraphics: [
         {
-            platform: "youtube",
-            videoLink: "https://www.youtube.com/shorts/Dsru72jUTEg"
+            platform: "drive",
+            videoLink: "https://drive.google.com/file/d/1ZIEW5npLFCkueg_3lH_yJW9tlr3diROd/view?usp=sharing"
         },
         {
-            platform: "youtube",
-            videoLink: "https://www.youtube.com/shorts/gOocHbldEtM"
+            platform: "drive",
+            videoLink: "https://drive.google.com/file/d/1zN2dVB9N9LiZHWfe43J_1v-GmcoNXPo4/view?usp=sharing"
         }
     ] 
 };
 
-// --- HELPER FUNCTION FOR VIDEO LINKS (Upgraded for Shorts) ---
+// --- HELPER FUNCTION FOR VIDEO LINKS ---
 function getEmbedUrl(videoData) {
     let embedUrl = "";
     if (videoData.platform === "youtube") {
         let cleanId = videoData.videoLink;
-        
-        // Handle placeholders safely
-        if (cleanId === "cook here" || cleanId === "") {
-            return ""; 
-        }
-
         if (cleanId.includes('youtu.be/')) {
             cleanId = cleanId.split('youtu.be/')[1].split('?')[0];
         } else if (cleanId.includes('watch?v=')) {
             cleanId = cleanId.split('watch?v=')[1].split('&')[0];
-        } else if (cleanId.includes('/shorts/')) {
-            cleanId = cleanId.split('/shorts/')[1].split('?')[0]; // Parses YouTube Shorts correctly
         }
         embedUrl = `https://www.youtube.com/embed/${cleanId}`;
     } else if (videoData.platform === "drive") {
@@ -154,9 +146,9 @@ function getEmbedUrl(videoData) {
 }
 
 // --- FLAT CARD BUILDER (Long form & Motion Graphics) ---
+// Added 'slide-animate' and data attributes for the observer to trigger animations
 function createVideoCard(videoData) {
     let embedUrl = getEmbedUrl(videoData);
-    let iframeHtml = embedUrl ? `<iframe src="${embedUrl}" allowfullscreen loading="lazy"></iframe>` : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#888;">Placeholder</div>`;
 
     let creatorInfoHtml = "";
     if (videoData.channelName) {
@@ -188,7 +180,7 @@ function createVideoCard(videoData) {
         <div class="video-card slide-animate">
             ${creatorInfoHtml}
             <div class="video-wrapper">
-                ${iframeHtml}
+                <iframe src="${embedUrl}" allowfullscreen></iframe>
             </div>
         </div>
     `;
@@ -232,6 +224,7 @@ function renderSection(sectionId, gridId, videoArray) {
 }
 
 // --- RENDER GROUPED LIST (Reels) ---
+// Added 'slide-animate' and data attributes for the observer
 function renderGroupedSection(sectionId, gridId, dataArray) {
     const section = document.getElementById(sectionId);
     const grid = document.getElementById(gridId);
@@ -244,11 +237,10 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
             let videosHtml = "";
             creator.videos.forEach(vid => {
                 let embedUrl = getEmbedUrl(vid);
-                let iframeHtml = embedUrl ? `<iframe src="${embedUrl}" allowfullscreen loading="lazy"></iframe>` : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#888;">Placeholder</div>`;
                 videosHtml += `
                     <div class="video-card no-margin">
                         <div class="video-wrapper">
-                            ${iframeHtml}
+                            <iframe src="${embedUrl}" allowfullscreen></iframe>
                         </div>
                     </div>
                 `;
@@ -287,6 +279,7 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
 }
 
 // --- SCROLL ANIMATION OBSERVER ---
+// This watches elements and animates them ONLY when they scroll into view
 let scrollObserver;
 
 function initScrollAnimations() {
@@ -295,23 +288,26 @@ function initScrollAnimations() {
     scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // 1. Trigger the Apple bouncy slide-in
                 entry.target.classList.add('visible');
                 
+                // 2. Trigger the number counter (if one exists inside this block)
                 const subCounter = entry.target.querySelector('.sub-count');
                 if (subCounter && !subCounter.classList.contains('animated')) {
-                    subCounter.classList.add('animated'); 
+                    subCounter.classList.add('animated'); // Mark so it doesn't double-animate
                     const startVal = parseFloat(subCounter.dataset.start) || 0;
                     const endVal = parseFloat(subCounter.dataset.end) || 0;
                     const suffix = subCounter.dataset.suffix || "";
                     animateValue(subCounter, startVal, endVal, 2500, suffix);
                 }
                 
+                // 3. Unobserve so it only happens ONCE per window open!
                 observer.unobserve(entry.target);
             }
         });
     }, { 
         root: document.getElementById('mac-content'), 
-        rootMargin: '0px 0px -40px 0px', 
+        rootMargin: '0px 0px -40px 0px', // Triggers slightly before it fully hits the bottom
         threshold: 0.1 
     });
 
@@ -361,6 +357,7 @@ function openWindow(section) {
         renderGroupedSection('reels-section', 'reels-wrapper', myWork.reels);
         renderSection('motion-section', 'motion-grid', myWork.motionGraphics);
 
+        // Initialize the scroll observer right after injecting the HTML
         setTimeout(() => {
             initScrollAnimations();
         }, 100);
