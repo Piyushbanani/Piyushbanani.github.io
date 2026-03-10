@@ -36,14 +36,13 @@
 /* --- APPLE-STYLE BOUNCY SLIDE ANIMATION --- */
 .slide-animate {
     opacity: 0;
-    transform: translateX(-60px); /* Starts off to the left */
-    transition: opacity 0.6s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* The magic bounce curve */
+    transform: translateX(-60px); 
+    transition: opacity 0.6s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 .slide-animate.visible {
     opacity: 1;
-    transform: translateX(0); /* Snaps into place */
+    transform: translateX(0); 
 }
-
 
 /* The Video Cards */
 .video-card {
@@ -128,6 +127,17 @@
     aspect-ratio: 9 / 16;
 }
 
+/* Native YouTube scaling for 9:16 layout */
+.reels-grid .video-wrapper iframe,
+.motion .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 /* Layout for Motion Graphics */
 .motion {
     display: grid;
@@ -139,32 +149,16 @@
     aspect-ratio: 9 / 16; 
 }
 
-/* --- THE MIDDLE-GROUND FIX FOR GOOGLE DRIVE --- */
-.reels-grid .video-wrapper iframe,
-.motion .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 150%;
-    transform: scale(0.666667);
-    transform-origin: top left;
-    border: none;
-}
-
 /* --- MOBILE RESPONSIVENESS (PHONES & SMALL TABLETS) --- */
 @media (max-width: 768px) {
     .reels-grid, 
     .motion {
-        /* Changes from 3 columns to a single stacking column */
         grid-template-columns: 1fr;
         gap: 25px; 
     }
     
     .reels-grid .video-wrapper,
     .motion .video-wrapper {
-        /* Prevents the 9:16 videos from becoming absurdly huge on screens.
-           Limits width to a standard phone size, centering it beautifully. */
         max-width: 320px; 
         margin: 0 auto; 
     }
