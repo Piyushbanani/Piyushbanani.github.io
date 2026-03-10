@@ -2,7 +2,7 @@
 .dark-page {
     background-color: #121212;
     color: #ffffff;
-    display: block; /* Overrides the center alignment from index */
+    display: block; 
     height: auto;
     min-height: 100vh;
 }
@@ -22,7 +22,7 @@
 }
 .back-button:hover { opacity: 1; }
 
-/* Elegant Titles like your Canva reference */
+/* Elegant Titles */
 .elegant-title {
     font-family: "Times New Roman", Times, serif;
     text-align: center;
@@ -38,12 +38,16 @@
     margin-bottom: 40px;
 }
 
+.video-card.no-margin {
+    margin-bottom: 0;
+}
+
 /* Creator Profile Info */
 .creator-info {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 15px; 
 }
 
 .creator-avatar {
@@ -51,7 +55,7 @@
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: #333; /* Placeholder gray */
+    background-color: #333; 
 }
 
 .creator-details {
@@ -67,31 +71,24 @@
     font-size: 16px;
 }
 
-/* The Blue Tick */
 .verified-tick {
     color: #1DA1F2;
     font-size: 14px;
 }
 
-/* Ensures sub-count correctly inherits the strong variables from style.css */
 .sub-count {
     font-size: 13.5px;
     font-weight: 500;
     color: var(--mac-subtext); 
 }
 
-/* The Actual Videos */
+/* --- THE VIDEO WRAPPERS --- */
 .video-wrapper {
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
     background-color: #222;
-}
-
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+    position: relative; 
 }
 
 /* Layout for Long Form (Wide) */
@@ -99,22 +96,48 @@
     aspect-ratio: 16 / 9;
 }
 
-/* Layout for Reels (Tall) - Puts them side by side */
-.reels {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.long-form .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
-.reels .video-wrapper {
+
+/* 3-Column Grid for nested Reels */
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.reels-grid .video-wrapper {
     aspect-ratio: 9 / 16;
 }
 
 /* Layout for Motion Graphics */
 .motion {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
+
 .motion .video-wrapper {
-    aspect-ratio: 1 / 1; /* Square format */
+    aspect-ratio: 9 / 16; 
+}
+
+/* --- THE MIDDLE-GROUND FIX FOR GOOGLE DRIVE --- */
+/* A 1.5x scale gives Drive just enough width to not break its alignment, 
+   while keeping the buttons at a comfortable, standard viewing size. */
+.reels-grid .video-wrapper iframe,
+.motion .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    transform: scale(0.666667);
+    transform-origin: top left;
+    border: none;
 }
