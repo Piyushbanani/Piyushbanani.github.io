@@ -17,7 +17,7 @@ toggleSwitch.addEventListener('change', function() {
     }
 });
 
-// --- 2. YOUR VIDEO DATA (LOCAL GITHUB HOSTING) ---
+// --- 2. YOUR VIDEO DATA (MIXED HOSTING) ---
 const myWork = {
     longForm: [
         {
@@ -45,8 +45,8 @@ const myWork = {
             videoCount: "150"
         },
         {
-            platform: "local",
-            videoLink: "portfolio videos/shyam_1.mp4", 
+            platform: "youtube",
+            videoLink: "https://youtu.be/2LVasifxts8?t=385", 
             channelName: "Shyam Meera Singh",
             username: "@ShyamMeeraSingh1",
             channelLink: "https://www.youtube.com/@ShyamMeeraSingh1",
@@ -57,8 +57,8 @@ const myWork = {
             videoCount: "146"
         },
         {
-            platform: "local",
-            videoLink: "portfolio videos/finance_1.mp4", 
+            platform: "youtube",
+            videoLink: "https://www.youtube.com/watch?v=dCsInyX7Q-g", 
             channelName: "Personal Finance TV",
             username: "@PersonalFinanceTV",
             channelLink: "https://www.youtube.com/@PersonalFinanceTV",
@@ -128,10 +128,34 @@ const myWork = {
     ] 
 };
 
+// --- YOUTUBE URL PARSER ---
+function getEmbedUrl(videoData) {
+    if (videoData.platform === "youtube") {
+        let cleanId = videoData.videoLink;
+        if (cleanId === "cook here" || cleanId === "") return "";
+        if (cleanId.includes('youtu.be/')) {
+            cleanId = cleanId.split('youtu.be/')[1].split('?')[0];
+        } else if (cleanId.includes('watch?v=')) {
+            cleanId = cleanId.split('watch?v=')[1].split('&')[0];
+        } else if (cleanId.includes('/shorts/')) {
+            cleanId = cleanId.split('/shorts/')[1].split('?')[0]; 
+        }
+        return `https://www.youtube.com/embed/${cleanId}`;
+    }
+    return "";
+}
 
-// --- FLAT CARD BUILDER (Using Native HTML5 Video) ---
+// --- FLAT CARD BUILDER (Handles Local & YouTube) ---
 function createVideoCard(videoData) {
-    let mediaHtml = `<video src="${videoData.videoLink}" controls preload="metadata" class="native-video"></video>`;
+    let mediaHtml = "";
+
+    if (videoData.platform === "youtube") {
+        let embedUrl = getEmbedUrl(videoData);
+        mediaHtml = embedUrl ? `<iframe src="${embedUrl}" allowfullscreen loading="lazy"></iframe>` : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#888;">Placeholder</div>`;
+    } else {
+        // controlsList="nodownload" forces the browser to hide the download button!
+        mediaHtml = `<video src="${videoData.videoLink}" controls controlsList="nodownload" preload="metadata" class="native-video"></video>`;
+    }
 
     let creatorInfoHtml = "";
     if (videoData.channelName) {
@@ -218,7 +242,14 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
         dataArray.forEach((creator) => {
             let videosHtml = "";
             creator.videos.forEach(vid => {
-                let mediaHtml = `<video src="${vid.videoLink}" controls preload="metadata" class="native-video"></video>`;
+                let mediaHtml = "";
+                if (vid.platform === "youtube") {
+                    let embedUrl = getEmbedUrl(vid);
+                    mediaHtml = embedUrl ? `<iframe src="${embedUrl}" allowfullscreen loading="lazy"></iframe>` : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#888;">Placeholder</div>`;
+                } else {
+                    mediaHtml = `<video src="${vid.videoLink}" controls controlsList="nodownload" preload="metadata" class="native-video"></video>`;
+                }
+
                 videosHtml += `
                     <div class="video-card no-margin">
                         <div class="video-wrapper">
