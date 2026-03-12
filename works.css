@@ -107,17 +107,21 @@
     aspect-ratio: 16 / 9;
 }
 
-/* --- NATIVE HTML5 VIDEO STYLING --- */
-.native-video {
+/* --- VIDEO ELEMENT STYLING (Native & YouTube) --- */
+.native-video,
+.video-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Fills the container perfectly, no black bars */
     border: none;
     outline: none;
     display: block; 
+}
+
+.native-video {
+    object-fit: cover; /* Fills the container perfectly, no black bars */
 }
 
 /* 3-Column Grid for nested Reels */
