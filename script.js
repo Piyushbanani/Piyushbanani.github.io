@@ -17,12 +17,12 @@ toggleSwitch.addEventListener('change', function() {
     }
 });
 
-// --- 2. YOUR VIDEO DATA (THE TEMPLATE BLOCKS) ---
+// --- 2. YOUR VIDEO DATA (LOCAL GITHUB HOSTING) ---
 const myWork = {
     longForm: [
         {
-            platform: "drive", 
-            videoLink: "https://drive.google.com/file/d/13S3bmxCsDd4ZFkcQYKudlnFxvXOOk28M/view?usp=sharing", 
+            platform: "local", 
+            videoLink: "portfolio videos/aevytv_1.mp4", 
             channelName: "Aevytv",
             username: "@aevytv",
             channelLink: "https://www.youtube.com/@aevytv",
@@ -33,8 +33,8 @@ const myWork = {
             videoCount: "540"
         },
         {
-            platform: "drive", 
-            videoLink: "https://drive.google.com/file/d/1Ps4dZHsptFCuiuEkqk5TyXwYkuSvqREU/view?usp=sharing", 
+            platform: "local", 
+            videoLink: "portfolio videos/shivanshu_1.mp4", 
             channelName: "Shivanshu Agrawal",
             username: "@Shivanshu.Agrawal",
             channelLink: "https://www.youtube.com/@Shivanshu.Agrawal",
@@ -45,8 +45,8 @@ const myWork = {
             videoCount: "150"
         },
         {
-            platform: "youtube",
-            videoLink: "https://youtu.be/2LVasifxts8?t=385", 
+            platform: "local",
+            videoLink: "portfolio videos/shyam_1.mp4", 
             channelName: "Shyam Meera Singh",
             username: "@ShyamMeeraSingh1",
             channelLink: "https://www.youtube.com/@ShyamMeeraSingh1",
@@ -57,8 +57,8 @@ const myWork = {
             videoCount: "146"
         },
         {
-            platform: "youtube",
-            videoLink: "https://www.youtube.com/watch?v=dCsInyX7Q-g", 
+            platform: "local",
+            videoLink: "portfolio videos/finance_1.mp4", 
             channelName: "Personal Finance TV",
             username: "@PersonalFinanceTV",
             channelLink: "https://www.youtube.com/@PersonalFinanceTV",
@@ -74,15 +74,15 @@ const myWork = {
             channelName: "Aniket Thakur",
             username: "@Aniketthakur01",
             channelLink: "https://www.instagram.com/anikett.thakurr/",
-            avatarUrl: "https://yt3.googleusercontent.com/vZOk8EXPt-z2D47EcxH7joqFahSmmw_OnmWb5yoL-m8wgzOnp0fuwbMp8i7yuChmuU_v9IOJ=s160-c-k-c0x00ffffff-no-rj",
+            avatarUrl: "https://yt3.ggpht.com/vZOk8EXPt-z2D47EcxH7joqFahSmmw_OnmWb5yoL-m8wgzOnp0fuwbMp8i7yuChmuU_v9IOJ=s176-c-k-c0x00ffffff-no-rj-mo",
             subStart: 500,
             subEnd: 964,
             subSuffix: "K",
             videoCount: "544",
             videos: [
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/1_X_JHKWxXAN0FepVgNiymipEUg668osf/view?usp=sharing" },
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/106WH4WJ3JwgMPYt08InnIKVqQDtG5fz1/view?usp=sharing" },
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/138eB2030DdxbX4wZfHEkvNZVo2Yw7l0k/view?usp=sharing" }
+                { platform: "local", videoLink: "portfolio videos/aniket_1.mp4" },
+                { platform: "local", videoLink: "portfolio videos/aniket_2.mp4" },
+                { platform: "local", videoLink: "portfolio videos/aniket_3.mp4" }
             ]
         },
         {
@@ -95,9 +95,9 @@ const myWork = {
             subSuffix: "M",
             videoCount: "799",
             videos: [
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/10tVHHFUCRIs25hK0MgHLc_QWFzlQnFRv/view?usp=sharing" },
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/1DODujJnRCP8A_CKq5AOYWAWPEr1vmdni/view?usp=sharing" },
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/1l9XFZcpFAFmccVWGERBgpTejKRjjz4qh/view?usp=sharing" }
+                { platform: "local", videoLink: "portfolio videos/adarsh_1.mp4" },
+                { platform: "local", videoLink: "portfolio videos/adarsh_2.mp4" },
+                { platform: "local", videoLink: "portfolio videos/adarsh_3.mp4" }
             ]
         },
         {
@@ -110,45 +110,28 @@ const myWork = {
             subSuffix: "K",
             videoCount: "300",
             videos: [
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/1OtOYIqvHqDrOVYwhDQ7A188X-uvymL4P/view?usp=sharing" },
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/15NXwwUDoRTdGtSlLkbmXoDWwUpnGqlPb/view?usp=sharing" },
-                { platform: "drive", videoLink: "https://drive.google.com/file/d/1rsFp-oCk76kr75Xom61iBGof5UjIOlbI/view?usp=sharing" }
+                { platform: "local", videoLink: "portfolio videos/nerdy_1.mp4" },
+                { platform: "local", videoLink: "portfolio videos/nerdy_2.mp4" },
+                { platform: "local", videoLink: "portfolio videos/nerdy_3.mp4" }
             ]
         }
     ],
     motionGraphics: [
         {
-            platform: "drive",
-            videoLink: "https://drive.google.com/file/d/1ZIEW5npLFCkueg_3lH_yJW9tlr3diROd/view?usp=sharing"
+            platform: "local",
+            videoLink: "portfolio videos/motion_1.mp4"
         },
         {
-            platform: "drive",
-            videoLink: "https://drive.google.com/file/d/1zN2dVB9N9LiZHWfe43J_1v-GmcoNXPo4/view?usp=sharing"
+            platform: "local",
+            videoLink: "portfolio videos/motion_2.mp4"
         }
     ] 
 };
 
-// --- HELPER FUNCTION FOR VIDEO LINKS ---
-function getEmbedUrl(videoData) {
-    let embedUrl = "";
-    if (videoData.platform === "youtube") {
-        let cleanId = videoData.videoLink;
-        if (cleanId.includes('youtu.be/')) {
-            cleanId = cleanId.split('youtu.be/')[1].split('?')[0];
-        } else if (cleanId.includes('watch?v=')) {
-            cleanId = cleanId.split('watch?v=')[1].split('&')[0];
-        }
-        embedUrl = `https://www.youtube.com/embed/${cleanId}`;
-    } else if (videoData.platform === "drive") {
-        embedUrl = videoData.videoLink.replace('/view?usp=sharing', '/preview').replace('/view', '/preview');
-    }
-    return embedUrl;
-}
 
-// --- FLAT CARD BUILDER (Long form & Motion Graphics) ---
-// Added 'slide-animate' and data attributes for the observer to trigger animations
+// --- FLAT CARD BUILDER (Using Native HTML5 Video) ---
 function createVideoCard(videoData) {
-    let embedUrl = getEmbedUrl(videoData);
+    let mediaHtml = `<video src="${videoData.videoLink}" controls preload="metadata" class="native-video"></video>`;
 
     let creatorInfoHtml = "";
     if (videoData.channelName) {
@@ -180,7 +163,7 @@ function createVideoCard(videoData) {
         <div class="video-card slide-animate">
             ${creatorInfoHtml}
             <div class="video-wrapper">
-                <iframe src="${embedUrl}" allowfullscreen></iframe>
+                ${mediaHtml}
             </div>
         </div>
     `;
@@ -224,7 +207,6 @@ function renderSection(sectionId, gridId, videoArray) {
 }
 
 // --- RENDER GROUPED LIST (Reels) ---
-// Added 'slide-animate' and data attributes for the observer
 function renderGroupedSection(sectionId, gridId, dataArray) {
     const section = document.getElementById(sectionId);
     const grid = document.getElementById(gridId);
@@ -236,11 +218,11 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
         dataArray.forEach((creator) => {
             let videosHtml = "";
             creator.videos.forEach(vid => {
-                let embedUrl = getEmbedUrl(vid);
+                let mediaHtml = `<video src="${vid.videoLink}" controls preload="metadata" class="native-video"></video>`;
                 videosHtml += `
                     <div class="video-card no-margin">
                         <div class="video-wrapper">
-                            <iframe src="${embedUrl}" allowfullscreen></iframe>
+                            ${mediaHtml}
                         </div>
                     </div>
                 `;
@@ -279,7 +261,6 @@ function renderGroupedSection(sectionId, gridId, dataArray) {
 }
 
 // --- SCROLL ANIMATION OBSERVER ---
-// This watches elements and animates them ONLY when they scroll into view
 let scrollObserver;
 
 function initScrollAnimations() {
@@ -288,26 +269,23 @@ function initScrollAnimations() {
     scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // 1. Trigger the Apple bouncy slide-in
                 entry.target.classList.add('visible');
                 
-                // 2. Trigger the number counter (if one exists inside this block)
                 const subCounter = entry.target.querySelector('.sub-count');
                 if (subCounter && !subCounter.classList.contains('animated')) {
-                    subCounter.classList.add('animated'); // Mark so it doesn't double-animate
+                    subCounter.classList.add('animated'); 
                     const startVal = parseFloat(subCounter.dataset.start) || 0;
                     const endVal = parseFloat(subCounter.dataset.end) || 0;
                     const suffix = subCounter.dataset.suffix || "";
                     animateValue(subCounter, startVal, endVal, 2500, suffix);
                 }
                 
-                // 3. Unobserve so it only happens ONCE per window open!
                 observer.unobserve(entry.target);
             }
         });
     }, { 
         root: document.getElementById('mac-content'), 
-        rootMargin: '0px 0px -40px 0px', // Triggers slightly before it fully hits the bottom
+        rootMargin: '0px 0px -40px 0px', 
         threshold: 0.1 
     });
 
@@ -357,7 +335,6 @@ function openWindow(section) {
         renderGroupedSection('reels-section', 'reels-wrapper', myWork.reels);
         renderSection('motion-section', 'motion-grid', myWork.motionGraphics);
 
-        // Initialize the scroll observer right after injecting the HTML
         setTimeout(() => {
             initScrollAnimations();
         }, 100);
@@ -375,6 +352,14 @@ function openWindow(section) {
 function closeWindow() {
     macWindow.classList.remove('active');
     windowOverlay.classList.remove('active'); 
+    
+    // Pause all playing videos when window closes
+    const videos = document.querySelectorAll('.native-video');
+    videos.forEach(video => {
+        if (!video.paused) {
+            video.pause();
+        }
+    });
     
     setTimeout(() => {
         macWindow.classList.remove('maximized');
