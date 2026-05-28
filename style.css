@@ -484,3 +484,92 @@ input:checked + .slider .moon-icon {
     display: flex;
     gap: 5px;
 }
+
+/* ============================================================
+   ADDITIONS — Canvas background & ambient details
+   These append to (not replace) the original style.css
+   ============================================================ */
+
+/* Canvas sits behind everything */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Card must clear the canvas */
+.profile-card {
+    z-index: 2;
+    /* Slightly richer shadow so card lifts off the animated background */
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.09),
+        0  4px 14px rgba(0, 0, 0, 0.05),
+        0  0   0 1px rgba(0, 0, 0, 0.03);
+}
+
+body.dark-mode .profile-card {
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.50),
+        0  6px 20px rgba(0, 0, 0, 0.30),
+        0  0   0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Subtle radial vignette — gives the page depth without touching the card */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.055) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+body.dark-mode::after {
+    background: radial-gradient(ellipse at 50% 50%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.22) 100%);
+}
+
+/* About me paragraph — clean, readable */
+.about-text {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.78;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 22px;
+}
+
+/* Film-frame corner brackets on the card
+   Barely visible by default; slightly more on hover */
+.cb {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 20;
+    transition: opacity 0.6s ease;
+}
+.profile-card:hover .cb { opacity: 0.16; }
+
+.cb.tl { top: 13px; left: 13px;
+          border-top:  1.5px solid currentColor;
+          border-left: 1.5px solid currentColor; }
+
+.cb.tr { top: 13px; right: 13px;
+          border-top:   1.5px solid currentColor;
+          border-right: 1.5px solid currentColor; }
+
+.cb.bl { bottom: 13px; left: 13px;
+          border-bottom: 1.5px solid currentColor;
+          border-left:   1.5px solid currentColor; }
+
+.cb.br { bottom: 13px; right: 13px;
+          border-bottom: 1.5px solid currentColor;
+          border-right:  1.5px solid currentColor; }

@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piyush banani - Portfolio</title>
+    <title>Piyush Banani — Video Editor</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="works.css">
 </head>
 <body>
 
+    <!-- Canvas lives behind everything — z-index 0 -->
+    <canvas id="bg-canvas"></canvas>
+
     <div class="profile-card">
+
+        <!-- Film-frame corner brackets — editor motif, barely visible -->
+        <span class="cb tl"></span>
+        <span class="cb tr"></span>
+        <span class="cb bl"></span>
+        <span class="cb br"></span>
         
         <div class="theme-switch-wrapper">
             <label class="switch" for="theme-toggle">
@@ -26,7 +35,7 @@
         <div class="profile-header">
             <div class="avatar"></div>
             <div class="name-container">
-                <h1>Piyush banani</h1>
+                <h1>Piyush Banani</h1>
             </div>
         </div>
 
@@ -55,7 +64,11 @@
 
         <div class="about-content-wrapper">
             <div class="about-content-inner">
-                <p style="color: var(--text-light); text-align: center; margin-top: 5px; margin-bottom: 25px;">Put your about me text here! You can write whatever you want in this space.</p>
+                <p class="about-text">
+                    I'm Piyush — a video editor from Jaipur who turns raw footage into content people actually watch till the end. I work with YouTube creators and Instagram pages on long-form videos and short-form reels, obsessing over the pacing and cuts that keep viewers hooked from the first second.
+                    <br><br>
+                    I've collaborated with creators across finance, commentary, entertainment, and lifestyle — helping channels grow from thousands to millions. I don't just splice clips together; I shape how a video feels. If your content needs an editor who thinks about storytelling, not just timelines — let's talk.
+                </p>
             </div>
         </div>
 
@@ -90,16 +103,15 @@
 
     <div id="mac-animation" class="hidden">
         <div class="mac-header">
-            <div class="dot red" onclick="closeWindow()" style="cursor: pointer;"></div>
-            <div class="dot yellow" onclick="closeWindow()" style="cursor: pointer;"></div>
-            <div class="dot green" onclick="maximizeWindow()" style="cursor: pointer;"></div>
+            <div class="dot red"    onclick="closeWindow()"    style="cursor: pointer;"></div>
+            <div class="dot yellow" onclick="closeWindow()"    style="cursor: pointer;"></div>
+            <div class="dot green"  onclick="maximizeWindow()" style="cursor: pointer;"></div>
             <span id="window-title" style="margin-left: 15px; font-weight: bold; color: var(--text-main);">Works</span>
         </div>
-        
-        <div class="mac-body" id="mac-content">
-        </div>
+        <div class="mac-body" id="mac-content"></div>
     </div>
 
     <script src="script.js"></script>
+    <script src="bg-anim.js"></script>
 </body>
 </html>
